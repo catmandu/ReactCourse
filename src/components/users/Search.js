@@ -8,12 +8,15 @@ const Search = () => {
 
   const [text, setText] = useState('');
 
+  const { users, searchUsers, clearUsers } = githubContext;
+  const { setAlert } = alertContext;
+
   const onSubmit = e => {
     e.preventDefault();
     if (text === '') {
-      alertContext.setAlert('Please enter something', 'light');
+      setAlert('Please enter something', 'light');
     } else {
-      githubContext.searchUsers(text);
+      searchUsers(text);
       setText('');
     }
   };
@@ -36,11 +39,8 @@ const Search = () => {
           className='btn btn-dark btn-block'
         />
       </form>
-      {githubContext.users.length > 0 && (
-        <button
-          className='btn btn-light btn-block'
-          onClick={githubContext.clearUsers}
-        >
+      {users.length > 0 && (
+        <button className='btn btn-light btn-block' onClick={clearUsers}>
           Clear
         </button>
       )}

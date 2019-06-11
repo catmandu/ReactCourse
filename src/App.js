@@ -11,39 +11,25 @@ import AlertState from './context/alert/AlertState';
 
 import './App.css';
 
-const App = () => {
-  // async componentDidMount() {
-  //   this.setState({ loading: true });
-
-  //   const res = await axios.get(
-  //     `https://api.github.com/users?client_id=${
-  //       process.env.REACT_APP_GITHUB_CLIENT_ID
-  //     }&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-  //   );
-
-  //   this.setState({ users: res.data, loading: false });
-  // }
-
-  return (
-    <GithubState>
-      <AlertState>
-        <Router>
-          <div className='App'>
-            <Navbar />
-            <div className='container'>
-              <Alert />
-              <Switch>
-                <Route exact path='/' component={Home} />
-                <Route exact path='/about' component={About} />
-                <Route exact path='/user/:login' component={User} />
-                <Route component={NotFound} />
-              </Switch>
-            </div>
+const App = () => (
+  <GithubState>
+    <AlertState>
+      <Router>
+        <div className='App'>
+          <Navbar />
+          <div className='container'>
+            <Alert />
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route exact path='/about' component={About} />
+              <Route exact path='/user/:login' component={User} />
+              <Route component={NotFound} />
+            </Switch>
           </div>
-        </Router>
-      </AlertState>
-    </GithubState>
-  );
-};
+        </div>
+      </Router>
+    </AlertState>
+  </GithubState>
+);
 
 export default App;
